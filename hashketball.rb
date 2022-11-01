@@ -1,4 +1,5 @@
 # Write your code below game_hash
+require "pry"
 def game_hash
   {
     home: {
@@ -127,3 +128,106 @@ def game_hash
 end
 
 # Write code here
+def num_points_scored(name)
+  game_hash.each do |team, data|
+    data.each do |attribute, value|
+      if attribute == :players
+        value.each do |s|
+          if s[:player_name] == name
+            puts s[:points]
+          end
+        end
+      end
+    end
+  end
+end
+
+num_points_scored("Kemba Walker")
+
+
+
+def num_points_scored(name)
+  game_hash.each do |team, data|
+    data.each do |attribute, value|
+      if attribute == :players
+        value.each do |s|
+          if s[:player_name] == name
+            puts s[:shoe]
+          end
+        end
+      end
+    end
+  end
+end
+
+num_points_scored("Kemba Walker")
+
+def team_colors(t)
+  c = []
+  game_hash.each do |team, data|
+    data.each do |s, value|
+      if s == :team_name
+        if value == t
+          data[:colors].each {|color| c.push(color)}
+        end
+      end
+    end
+  end
+  puts c
+end
+
+team_colors("Brooklyn Nets")
+
+def team_names
+  n = []
+  game_hash.each do |team, data|
+    data.each do |attribute,value|
+      if attribute == :team_name
+        n.push(value)
+      end
+    end
+  end
+  puts n
+end
+
+team_names
+
+def player_numbers(t_name)
+  j = []
+  game_hash.each do |team, data|
+    if data[:team_name] == t_name
+      data.each do |attribute, value|
+        if attribute == :players
+          value.each do |s|
+            j.push(s[:number])
+          end
+        end
+      end
+    end
+  end
+  puts j
+end
+
+player_numbers("Brooklyn Nets")
+
+def player_stats(playa)
+  game_hash.each do |team, data|
+    data.each do |attribute, value|
+      if attribute == :players
+        value.each do |s|
+          if s[:player_name] == playa
+            puts s
+          end
+        end
+      end
+    end
+  end
+end
+
+player_stats("Alan Anderson")
+
+def big_shoe_rebounds
+  game_hash.each do |team, data|
+    data.each do |attribute, value|
+      if attribute == :players
+        value.each do |s|
